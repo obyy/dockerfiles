@@ -1,6 +1,6 @@
 un petit repo pour lister l'ensemble de mes dockerfiles. Je m'efforce de faire les plus petites images docker possible.
 # Freshrss
-variable d'environnement "CRON"
+variable d'environnement "CRON", par default freshrss recherche une mise a jour des flux toutes les 30 minutes.
 ```
 docker run --name freshrss -it --rm -v ~/data/freshrss:/freshrss/data -p 9898:80 freshrss:1.8
 ```
