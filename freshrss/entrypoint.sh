@@ -27,6 +27,11 @@ chown user:user /var/spool/cron/crontabs/user
 chmod 600 /var/spool/cron/crontabs/user
 crond
 echo "STARTING Apache with UID=${UID:-9001}"
-exec su-exec user httpd -D FOREGROUND
+
+if [ "$1" = "sh" ];then 
+	/bin/sh
+else
+	exec su-exec user httpd -D FOREGROUND
+fi
 #exec $@
 #$@
