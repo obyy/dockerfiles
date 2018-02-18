@@ -5,7 +5,8 @@ if [ ! -d /freshrss/data/users ]; then
 fi
 
 adduser -D -u ${UID:-9001} user
-chmod 777 /dev/pts/0
+echo ServerName $(hostname) >> /etc/apache2/httpd.conf
+
 chown user /run/apache2
 
 if ! chown -R :user /freshrss/data; then
@@ -28,10 +29,8 @@ chmod 600 /var/spool/cron/crontabs/user
 crond
 echo "STARTING Apache with UID=${UID:-9001}"
 
-if [ "$1" = "sh" ];then 
+if [ "$1" = "sh" ];then
 	/bin/sh
 else
 	exec su-exec user httpd -D FOREGROUND
 fi
-#exec $@
-#$@
