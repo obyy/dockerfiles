@@ -5,7 +5,9 @@ if [ ! -d /freshrss/data/users ]; then
 fi
 
 adduser -D -u ${UID:-9001} user
+# eviter apache error acces 
 echo ServerName $(hostname) >> /etc/apache2/httpd.conf
+chmod 333 /proc/self/fd/2 /proc/self/fd/1
 
 chown user /run/apache2
 
