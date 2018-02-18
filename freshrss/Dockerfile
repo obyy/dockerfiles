@@ -39,6 +39,6 @@ RUN apk update && apk add --no-cache apache2 php7 \
 COPY . /
 
 
-EXPOSE 80
+EXPOSE 8080
 VOLUME /freshrss/data
 ENTRYPOINT ["/entrypoint.sh"]
