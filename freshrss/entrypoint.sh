@@ -35,7 +35,7 @@ else
 #!/bin/sh
 while true; do
 	/usr/bin/php7 -f /freshrss/app/actualize_script.php
-	sleep 30m
+	sleep ${UPDATE:-30m}
 done
 EOF
 	chmod +x /cron-script.sh
