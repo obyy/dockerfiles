@@ -33,6 +33,7 @@ if [ "${CRON}" = "TRUE" ]; then
 else
 	cat << EOF > /cron-script.sh
 #!/bin/sh
+sleep 15
 while true; do
 	/usr/bin/php7 -f /freshrss/app/actualize_script.php
 	sleep ${UPDATE:-30m}
