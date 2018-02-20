@@ -1,6 +1,6 @@
 un petit repo pour lister l'ensemble de mes dockerfiles. Je m'efforce de faire les plus petites images docker possible.
 # Freshrss
-Container pour lancé une instance de freshrss qui tourne sous apache et mod_php 7, et sur une base de donnée SQLite.
+Container pour lancé une instance de freshrss (https://freshrss.org) qui tourne sous apache et mod_php 7, et sur une base de donnée SQLite.
 La base de donné sqlite est plus simple pour la sauvegarde du profile utilisateur, et souvent plus rapide qu'un serveur Postgresql
 De base le conteneur se lance sans processus root.
 2 variables d'environnements peuvent être selectionnée pour afiner le reglage.
