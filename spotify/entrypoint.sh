@@ -20,6 +20,9 @@ useradd -m -d /spotify -u ${UID:-9001} user
 chown user:user -R /spotify
 gpasswd -a user audio
 
-
-echo "STARTING Spotify with UID=${UID:-9001}"
-gosu user spotify
+if [ "$1" = "sh" ];then
+	/bin/sh
+else
+	echo "STARTING Spotify with UID=${UID:-9001}"
+	gosu user spotify
+fi
