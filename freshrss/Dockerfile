@@ -17,6 +17,7 @@ RUN apk update && apk add --no-cache apache2 php7 \
 	php7-zip \
 	php7-simplexml \
 	php7-json \
+	acf-jquery \
 	curl && \
 # logge to STDOUT et STDERR
         sed -ri -e 's!^(\s*CustomLog)\s+\S+!\1 /proc/self/fd/1!g' \
