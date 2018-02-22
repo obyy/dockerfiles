@@ -37,11 +37,11 @@ lancer une instanc de spotify :
 docker run -h spotify-obyy --name spotify-obyy \
   -v /etc/localtime:/etc/localtime:ro \
   -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
-  -v /run/user/$UID/pulse:/run/pulse:ro  \
+  -v /run/user/$UUID/pulse:/run/pulse:ro  \
   --device /dev/dri \
   --userns=host \
   --net=host \
-  -e UID=1000 -e DISPLAY=:0  \
+  -e UID=$UUID -e DISPLAY=:0  \
   -v $HOME/spotify \
   obyy/spotify
 ```
