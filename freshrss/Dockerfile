@@ -42,7 +42,7 @@ RUN apk update && apk add --no-cache apache2 php7 \
 	curl -fSL https://github.com/FreshRSS/Extensions/archive/master.tar.gz | tar xz --strip 1 && \
 	curl -fSL https://github.com/aledeg/FreshRSS-extensions/archive/master.tar.gz | tar xz --strip 1 && \
 	curl -fSL https://github.com/Eisa01/FreshRSS---Auto-Refresh-Extension/archive/master.tar.gz | tar xz --strip 1 && \
-	apk del curl && rm -r /var/cache/apk/* /tmp/*
+	apk del curl && rm -r /var/cache/apk/*
 
 COPY . /
 
