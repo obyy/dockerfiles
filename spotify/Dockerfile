@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	dirmngr \
 	gosu \
 	gnupg \
-        xdg-utils libxss1 pulseaudio fonts-noto
+        xdg-utils libxss1 pulseaudio fonts-noto libgl1-mesa-glx libgl1-mesa-dri
 
 
 RUN 	apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410 && \
