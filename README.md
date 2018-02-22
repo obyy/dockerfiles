@@ -5,23 +5,43 @@ La base de donné sqlite est plus simple pour la sauvegarde du profile utilisate
 De base le conteneur se lance sans processus root.
 2 variables d'environnements peuvent être selectionnée pour afiner le reglage.
 ```
-docker run --name freshrss -v ~/data/freshrss:/freshrss/data -p 9898:8080 obyy/freshrss-alpine
+docker run --name freshrss \
+  -v ~/data/freshrss:/freshrss/data \
+  -p 9898:8080 \
+  obyy/freshrss-alpine
 ```
 Syncrhonisation par defaut se lance avec un script et une tache sleep toutes les 30minutes, la valeur de la tache sleep peut être modifier avec la variable d'environnement UPDATE
 
 ```
-docker run --name freshrss -e UPDATE="1h" -v ~/data/freshrss:/freshrss/data -p 9898:8080 obyy/freshrss-alpine
+docker run --name freshrss \
+  -e UPDATE="1h" \
+  -v ~/data/freshrss:/freshrss/data \
+  -p 9898:8080 \
+  obyy/freshrss-alpine
 ```
 
 Syncrhonisation avec une tache cron toutes les heures à la 5ème minute, cron doit être lancé en root :(
 ```
-docker run --name freshrss -e CRON="5 * * * *" -v ~/data/freshrss:/freshrss/data -p 9898:8080 obyy/freshrss-alpine
+docker run --name freshrss \
+  -e CRON="5 * * * *" \
+  -v ~/data/freshrss:/freshrss/data \
+  -p 9898:8080 \
+  obyy/freshrss-alpine
 ```
 
 # Spotify
 
 lancer une instanc de spotify : 
 
-```
- docker run -h spotify-obyy  -v /etc/localtime:/etc/localtime:ro -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v /run/user/$UID/pulse:/run/pulse:ro  --device /dev/dri --userns=host --net=host -e UID=1000 -e DISPLAY=:0  --name spotifytest -h spotify-cyp -v $HOME/spotify obyy/spotify
+```console
+docker run -h spotify-obyy --name spotify-obyy \
+  -v /etc/localtime:/etc/localtime:ro \
+  -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+  -v /run/user/$UID/pulse:/run/pulse:ro  \
+  --device /dev/dri \
+  --userns=host \
+  --net=host \
+  -e UID=1000 -e DISPLAY=:0  \
+  -v $HOME/spotify \
+  obyy/spotify
 ```
