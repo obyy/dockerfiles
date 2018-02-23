@@ -22,13 +22,15 @@ RUN apk update && apk add --no-cache apache2 php7 \
 	git \
 	ca-certificates \
 	curl && \
-# logge to STDOUT et STDERR
+# log to STDOUT and STDERR
         sed -ri -e 's!^(\s*CustomLog)\s+\S+!\1 /proc/self/fd/1!g' \
                 -e 's!^(\s*Listen)\s+\S+!\1 8080!g' \
                 -e 's!^(\s*ErrorLog)\s+\S+!\1 /proc/self/fd/2!g' \
                 -e 's!^(\s*LogLevel)\s+\S+!\1 warn!g' \
 		-e 's!#\(LoadModule expires_module modules/mod_expires.so\)!\1!' \
 		"/etc/apache2/httpd.conf" && \
+#enable php_openssl for extensions
+	sed -ri -e 's!.*(extension=php_openssl.dll)!\1!g' /etc/php7/php.ini && \
 #set unpriviligied permission acces for stdout
 	chmod 333 /proc/self/fd/2 /proc/self/fd/1 && \
 	mkdir /run/apache2 /freshrss && \
