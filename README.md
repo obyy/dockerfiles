@@ -1,7 +1,7 @@
 un petit repo pour lister l'ensemble de mes dockerfiles. Je m'efforce de faire les plus petites images docker possible.
 
 # Freshrss
-[![](https://images.microbadger.com/badges/image/obyy/freshrss-alpine.svg)](https://microbadger.com/images/obyy/freshrss-alpine "Get your own image badge on microbadger.com")[![](https://images.microbadger.com/badges/version/obyy/freshrss-alpine.svg)](https://microbadger.com/images/obyy/freshrss-alpine "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/obyy/freshrss-alpine.svg)](https://microbadger.com/images/obyy/freshrss-alpine "Get your own image badge on microbadger.com")
 
 Container pour lancé une instance de [freshrss](https://freshrss.org) qui tourne sous apache et mod_php 7, et sur une base de donnée SQLite.
 La base de donné sqlite est plus simple pour la sauvegarde du profile utilisateur, et souvent plus rapide qu'un serveur Postgresql
