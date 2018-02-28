@@ -4,6 +4,6 @@ RUN apk update && apk --no-cache add git  mediainfo su-exec python2 \
   && mkdir config tv downloads \
   && rm -r /var/cache/apk/*
 COPY . /
-EXPOSE 8181
+EXPOSE 8081
 VOLUME /config
 ENTRYPOINT ["/entrypoint.sh"]
