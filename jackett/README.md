@@ -1,20 +1,13 @@
 # medusa
 
-image docker de [medusa](https://github.com/pymedusa/Medusa).
+image docker de [Jackett](https://github.com/Jackett/Jackett).
 
 
 ```shell
-docker run -d --name medusa \
-  --restart=unless-stopped \
-  --net=frontend \
-  -v ~/data/medusa:/config \
-  -v /media/tv:/tv \
-  -v /media/filter:/filter \
-  -e UID=1000 --userns host \
-  -p 8081:8081 \
-  -e TZ=Europe/Paris \
-  obyy/medusa:latest
-
+docker run -d --name jackett \
+  -p 9117:9117 \
+  -v ~/data/jackett:/config \
+  obyy/jackett:latest
 ```
 
 
