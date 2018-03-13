@@ -1,4 +1,4 @@
-# jackett
+# medusa
 
 image docker de [Jackett](https://github.com/Jackett/Jackett).
 
@@ -9,3 +9,5 @@ docker run -d --name jackett \
   -v ~/data/jackett:/config \
   obyy/jackett:latest
 ```
+
+
