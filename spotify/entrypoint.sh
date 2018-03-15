@@ -24,5 +24,5 @@ if [ "$1" = "sh" ];then
 	/bin/sh
 else
 	echo "STARTING Spotify with UID=${UID:-9001}"
-	exec gosu user spotify
+	exec gosu user spotify --cache-path=/cache
 fi
