@@ -11,4 +11,3 @@ if [ "$#" = "0" ]; then
 else
   exec $@
 fi
-
