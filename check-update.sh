@@ -2,10 +2,13 @@
 #script check github repository, and if one are updated, then send webhook or rebuild images.
 set -e
 . .mail_to
+
+NOTIFY=0
 #check update
 gitChecksum(){
   git ls-remote -h https://github.com/$1 master | cut -f1
 }
+
 gitRelease(){
 curl --silent "https://api.github.com/repos/$1/releases/latest" | sed -nr 's/.*"tag_name": "(.*)",/\1/p'
 }
@@ -14,6 +17,7 @@ log() {
 echo "$@"
 echo "$(date): $@" >> $tmp
 }
+
 
 compareChecksum() {
 repo=$1
@@ -31,15 +35,16 @@ else
 fi
 }
 
+#send webhook to $url, it whil update image on the docker hub
 
-send-webhook(){
+send-webhook() {
 if grep webhookurl $webhook >/dev/null; then
   url=$(grep webhookurl $webhook | cut -d" " -f2)
   if curl --data build=true -X POST $url >/dev/null ;then
-#if true; then
     log "web trigger send to $url"
     sed -ie "s!$id_old!$id_new!" $webhook
-    send-email
+#    send-email
+    NOTIFY=$(($NOTIFY + 1))
   else
     log "failed to send to $url"
   fi
@@ -71,5 +76,9 @@ for d in $(ls -d ./*/); do
 	done
   log""
 done
+
+if [ $NOTIFY -gt 0 ]; then
+	cat $tmp | /usr/bin/slack-push.sh Docker-update info "$NOTIFY MaJ docker"
+fi
 
 rm $tmp
